@@ -9,11 +9,11 @@ set verify off;
 set serveroutput on;
 prompt Creating schema user...
 
-accept user_name prompt 'Please enter the name of user to generate: '
-accept schema_password prompt 'Please enter the password of the schema: '
+accept user_name prompt 'Enter the user name: '
+--accept schema_password prompt 'Please enter the password of the schema: '
 REM accept oracle_service prompt 'Please enter the Oracle service name: '
 --accept profile_name prompt 'Please enter the name of the profile to generate: '
---accept user_app_name prompt 'Please enter the name of the app user to generate: '
+accept user_app_name prompt 'Enter the application user name: '
 
 
 rem dropping the user, app user and role 
@@ -27,10 +27,12 @@ begin
 		execute immediate 'drop user &user_name cascade';
 	end if;	
     
---    select count(1) into res from all_users where upper(username) = upper('&user_app_name');
---	if res <> 0 then
---		execute immediate 'drop user &user_app_name cascade';
---	end if;	
+    DBMS_OUTPUT.put_line('---- Check if the same  application user exists');
+    select count(1) into res from all_users where upper(username) = upper('&user_app_name');
+	if res <> 0 then
+        DBMS_OUTPUT.put_line('---- Drop the same application user');
+		execute immediate 'drop user &user_app_name cascade';
+	end if;	
 --    
 --    select count(1) into res from dba_profiles where upper(username) = upper('&profile_name');
 --    if res <> 0 then
@@ -43,7 +45,9 @@ end;
 --    SESSIONS_PER_USER           2; /
 --    
 create user &user_name identified by &user_name; /
+GRANT CONNECT, RESOURCE TO &user_name; /
+GRANT CREATE VIEW TO &user_name;
 
---GRANT CONNECT, RESOURCE TO &user_name; /
---GRANT CREATE VIEW TO &user_name;
+create user &user_app_name identified by &user_app_name; /
+
 
