@@ -34,13 +34,13 @@ create or replace view VB as Select * FROM B where ROWNUM = 1; /
 
 -------------------------------------------------------------------
 
-GRANT SELECT ON A TO CAT_APP_USER; /
-GRANT SELECT ON B TO CAT_APP_USER; /
-GRANT SELECT ON VA TO CAT_APP_USER; /
-GRANT SELECT ON VB TO CAT_APP_USER; /
+GRANT SELECT ON A TO app_user_role; /
+GRANT SELECT ON B TO app_user_role; /
+GRANT SELECT ON VA TO app_user_role; /
+GRANT SELECT ON VB TO app_user_role; /
 
-GRANT EXECUTE ON F1 to CAT_APP_USER; /
-GRANT EXECUTE ON F2 to CAT_APP_USER; /
+GRANT EXECUTE ON F1 to app_user_role; /
+GRANT EXECUTE ON F2 to app_user_role; /
 
 -------------------------------------------------------------------
 
