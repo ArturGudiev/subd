@@ -1,0 +1,51 @@
+
+SQL*Loader: Release 11.2.0.2.0 - Production on ¿¿ ¿¿¿ 7 10:05:18 2018
+
+Copyright (c) 1982, 2009, Oracle and/or its affiliates.  All rights reserved.
+
+Control File:   a.ctl
+Data File:      a.ctl
+  Bad File:     a.bad
+  Discard File:  none specified
+ 
+ (Allow all discards)
+
+Number to load: ALL
+Number to skip: 0
+Errors allowed: 50
+Bind array:     64 rows, maximum of 256000 bytes
+Continuation:    none specified
+Path used:      Conventional
+
+Table BOOKS_ADMIN.XX_MYEXAMPLE, loaded from every logical record.
+Insert option in effect for this table: TRUNCATE
+TRAILING NULLCOLS option in effect
+
+   Column Name                  Position   Len  Term Encl Datatype
+------------------------------ ---------- ----- ---- ---- ---------------------
+VAL1                                FIRST     *   ;       CHARACTER            
+VAL2                                 NEXT     *   ;       CHARACTER            
+VAL3                                 NEXT     *   ;       CHARACTER            
+
+Record 4: Discarded - all columns null.
+
+Table BOOKS_ADMIN.XX_MYEXAMPLE:
+  3 Rows successfully loaded.
+  0 Rows not loaded due to data errors.
+  0 Rows not loaded because all WHEN clauses were failed.
+  1 Row not loaded because all fields were null.
+
+
+Space allocated for bind array:                  49536 bytes(64 rows)
+Read   buffer bytes: 1048576
+
+Total logical records skipped:          0
+Total logical records read:             4
+Total logical records rejected:         0
+Total logical records discarded:        1
+
+Run began on ¿¿ ¿¿¿ 07 10:05:18 2018
+Run ended on ¿¿ ¿¿¿ 07 10:05:18 2018
+
+Elapsed time was:     00:00:00.19
+CPU time was:         00:00:00.08
