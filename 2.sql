@@ -49,5 +49,10 @@ GRANT CONNECT, RESOURCE TO &user_name; /
 GRANT CREATE VIEW TO &user_name;
 
 create user &user_app_name identified by &user_app_name; /
+GRANT CONNECT, RESOURCE TO &app_user_name; /
+
+--conn &user_name/&user_name
+conn &user_app_name/&user_app_name
+
 
 
