@@ -43,10 +43,7 @@ begin
 	end if;
 end;	
 /
---create profile &profile_name limit
---    IDLE_TIME		            1
---    SESSIONS_PER_USER           2; /
---    
+
 create user &user_name identified by &user_name; /
 GRANT CONNECT, RESOURCE TO &user_name; /
 GRANT CREATE VIEW TO &user_name;
@@ -58,6 +55,7 @@ create user &app_user_name identified by &app_user_name; /
 grant app_user_role to &app_user_name;
 conn &user_name/&user_name
 prompt ==============================================================
+prompt ===========connected as developer user =======================
 prompt ---- Creating 2 tables, 2 functions and 2 views
 
 create table A (id int ); /
@@ -95,7 +93,17 @@ GRANT EXECUTE ON F1 to app_user_role; /
 GRANT EXECUTE ON F2 to app_user_role; /
 
 
---conn &app_user_name/&app_user_name
+conn &app_user_name/&app_user_name
+prompt =================================================================
+prompt ===========connected as application user ========================
 
 
+select * from &user_name..A; /
+select * from &user_name..B; /
+select * from &user_name..VA; /
+select * from &user_name..VB; /
 
+set serveroutput on;
+
+execute &user_name..F1();    
+execute &user_name..F2();    
