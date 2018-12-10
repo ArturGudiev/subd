@@ -31,4 +31,21 @@ GRANT READ, WRITE ON DIRECTORY dp_dir TO system;
 
 conn myschema/myschema
 
+prompt ==============================================================
+prompt ===========connected as myschema==============================
+prompt ---------- Creating table ------------------------------------
+
+create table products(id number, name varchar2(15));
+insert into products values(1, 'bread');
+insert into products values(2, 'butter');
+insert into products values(3, 'milk');
+
+commit;
+
+
+conn system/oracle
  
+prompt ==============================================================
+prompt ===========connected as system==============================
+
+select * from myschema.products;

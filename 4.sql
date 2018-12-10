@@ -38,3 +38,5 @@ prompt ======================================
 prompt ----------after loading---------------
 
 select * from books_admin.test;
+
+conn system/oracle
