@@ -1,7 +1,10 @@
 set verify off;
 set serveroutput on;
 
-REM d C:\Programming\Oracle\dp_dir\*
+--host "del C:\Programming\Oracle\dp_dir\* /F"
+--host cc subd dpclear
+host subd dpclear
+--host powershell  "& ""Remove-Item C:\Programming\Oracle\dp_dir\*"""
 
 declare
 	res number;
@@ -51,4 +54,14 @@ prompt ===========connected as system==============================
 
 select * from myschema.products;
 
+select COUNT(1) from all_tables where upper(owner)='MYSCHEMA';
+
 host C:\oraclexe\app\oracle\product\11.2.0\server\bin\expdp.exe system/oracle schemas=myschema directory=dp_dir dumpfile=expdp_myschema.dmp logfile=expdp_myschema.log
+
+drop user myschema cascade;
+
+prompt ----------------after dropping --------------------------------
+
+select COUNT(1) from all_tables where upper(owner)='MYSCHEMA';
+
+--host C:\oraclexe\app\oracle\product\11.2.0\server\bin\expdp.exe system/oracle schemas=myschema directory=dp_dir dumpfile=expdp_myschema.dmp logfile=expdp_myschema.log
