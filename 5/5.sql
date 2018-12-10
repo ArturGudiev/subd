@@ -1,6 +1,7 @@
 set verify off;
 set serveroutput on;
 
+REM d C:\Programming\Oracle\dp_dir\*
 
 declare
 	res number;
@@ -49,3 +50,5 @@ prompt ==============================================================
 prompt ===========connected as system==============================
 
 select * from myschema.products;
+
+host C:\oraclexe\app\oracle\product\11.2.0\server\bin\expdp.exe system/oracle schemas=myschema directory=dp_dir dumpfile=expdp_myschema.dmp logfile=expdp_myschema.log
