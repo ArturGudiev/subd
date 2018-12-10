@@ -64,6 +64,7 @@ prompt ----------------after dropping --------------------------------
 
 select COUNT(1) from all_tables where upper(owner)='MYSCHEMA';
 
-host C:\oraclexe\app\oracle\product\11.2.0\server\bin\impdp.exe impdp system/oracle schemas=myschema directory=dp_dir dumpfile=expdp_myschema.dmp
+host C:\oraclexe\app\oracle\product\11.2.0\server\bin\impdp.exe system/oracle schemas=myschema directory=dp_dir dumpfile=expdp_myschema.dmp
 
 select COUNT(1) from all_tables where upper(owner)='MYSCHEMA';
+
