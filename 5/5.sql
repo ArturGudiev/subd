@@ -1,6 +1,7 @@
 set verify off;
 set serveroutput on;
 
+
 declare
 	res number;
 begin
@@ -16,8 +17,18 @@ begin
 	if res <> 0 then
         DBMS_OUTPUT.put_line('---- Drop directory dp_dir');
 		execute immediate 'drop directory dp_dir';
-	end if;	
-    
+	end if;	    
 end;	
 /
+
+create user myschema identified by myschema; 
+ALTER USER myschema ACCOUNT UNLOCK;
+grant connect, resource to myschema; 
+
+create directory dp_dir as 'C:\Programming\Oracle\dp_dir\';
+GRANT READ, WRITE ON DIRECTORY dp_dir TO myschema;
+GRANT READ, WRITE ON DIRECTORY dp_dir TO system;
+
+conn myschema/myschema
+
  
