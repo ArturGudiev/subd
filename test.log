@@ -1,0 +1,59 @@
+
+SQL*Loader: Release 11.2.0.2.0 - Production on ¿¿ ¿¿¿ 9 16:55:58 2018
+
+Copyright (c) 1982, 2009, Oracle and/or its affiliates.  All rights reserved.
+
+Control File:   C:\Artur\University\SUBD\4\test.ctl
+Data File:      C:\Artur\University\SUBD\4\test.ctl
+  Bad File:     C:\Artur\University\SUBD\4\test.bad
+  Discard File:  none specified
+ 
+ (Allow all discards)
+
+Number to load: ALL
+Number to skip: 0
+Errors allowed: 50
+Bind array:     64 rows, maximum of 256000 bytes
+Continuation:    none specified
+Path used:      Conventional
+
+Table BOOKS_ADMIN.TEST, loaded from every logical record.
+Insert option in effect for this table: TRUNCATE
+TRAILING NULLCOLS option in effect
+
+   Column Name                  Position   Len  Term Encl Datatype
+------------------------------ ---------- ----- ---- ---- ---------------------
+ID                                  FIRST     *   ;       CHARACTER            
+X                                    NEXT     *   ;       CHARACTER            
+Y                                    NEXT     *   ;       CHARACTER            
+PROCESS_STATE                        NEXT     *   ;       CHARACTER            
+CREATION_DATE                        NEXT     *   ;       DATE dd-mm-yyyy      
+UPDATE_DATE                          NEXT     *   ;       DATE yyyy-mm-dd      
+
+Record 6: Rejected - Error on table BOOKS_ADMIN.TEST, column Y.
+ORA-01722: invalid number
+
+Record 16: Rejected - Error on table BOOKS_ADMIN.TEST, column Y.
+ORA-01722: invalid number
+
+
+Table BOOKS_ADMIN.TEST:
+  18 Rows successfully loaded.
+  2 Rows not loaded due to data errors.
+  0 Rows not loaded because all WHEN clauses were failed.
+  0 Rows not loaded because all fields were null.
+
+
+Space allocated for bind array:                  99072 bytes(64 rows)
+Read   buffer bytes: 1048576
+
+Total logical records skipped:          0
+Total logical records read:            20
+Total logical records rejected:         2
+Total logical records discarded:        0
+
+Run began on ¿¿ ¿¿¿ 09 16:55:58 2018
+Run ended on ¿¿ ¿¿¿ 09 16:55:58 2018
+
+Elapsed time was:     00:00:00.16
+CPU time was:         00:00:00.06

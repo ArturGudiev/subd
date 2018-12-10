@@ -1,42 +1,14 @@
-create table books_admin.XX_MYEXAMPLE2 (
-    id number,
-    item varchar2(100),
-    color varchar2(100), 
-    price number,
-    creation_date date
-); / 
-
-drop table books_admin.XX_MYEXAMPLE2; 
-
---insert into books_admin.XX_MYEXAMPLE2 values (1,'1','1',2, sysdate); /
-
-column item format a10; \
-column color format a10; \
-select * from books_admin.XX_MYEXAMPLE2; 
+declare
+BEGIN
+	 EXECUTE IMMEDIATE 'DROP TABLE  books_admin.test';
+EXCEPTION
+   WHEN OTHERS THEN
+      IF SQLCODE != -942 THEN
+         RAISE;
+      END IF;
+end;	
 /
 
-sqlldr books_admin/MyPassword control=a2.ctl
-----------------------------------------------------------------
-
-create table books_admin.EXPERIMENTS (
-    id number,
-    x float,
-    y float,
-    z float,
-    creation_date date, 
-    last_modify_date date,
-    str varchar2(50)
-);
-
-/
-drop table books_admin.EXPERIMENTS; 
-/
-SELECT * FROM  books_admin.EXPERIMENTS; 
-/
-
---sqlldr books_admin/MyPassword control=experiments.ctl
-
------------------------test---------------------------------------
 create table books_admin.test (
   id number,
   x number,
@@ -46,11 +18,23 @@ create table books_admin.test (
   update_date date
 );
 
-drop table books_admin.test;
+--drop table books_admin.test;
+prompt ======================================
+prompt ----------before insert--------------
+
 select * from books_admin.test;
 
-column process_state format a15; /
-column creation_date format a15; /
-column update_date format a15; /
+column process_state format a15; 
+column creation_date format a15; 
+column update_date format a15; 
 
-sqlldr books_admin/MyPassword control=test.ctl
+prompt ======================================
+prompt ----------launch sqlldr --------------
+
+host C:\oraclexe\app\oracle\product\11.2.0\server\bin\sqlldr.exe books_admin/MyPassword control=C:\Artur\University\SUBD\4\test.ctl
+--sqlldr books_admin/MyPassword control=C:\Artur\University\SUBD\4\test.ctl
+
+prompt ======================================
+prompt ----------after loading---------------
+
+select * from books_admin.test;
