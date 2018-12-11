@@ -1,3 +1,5 @@
+conn books_admin/MyPassword
+
 declare
 BEGIN
 	 EXECUTE IMMEDIATE 'DROP TABLE  books_admin.test';
@@ -8,6 +10,8 @@ EXCEPTION
       END IF;
 end;	
 /
+
+
 
 create table books_admin.test (
   id number,
@@ -31,7 +35,7 @@ column update_date format a15;
 prompt ======================================
 prompt ----------launch sqlldr --------------
 
-host C:\oraclexe\app\oracle\product\11.2.0\server\bin\sqlldr.exe books_admin/MyPassword control=C:\Artur\University\SUBD\4\test.ctl
+host C:\app\gudiea\virtual\product\12.2.0\dbhome_1\bin\sqlldr.exe books_admin/MyPassword control=C:\Artur\University\SUBD\4\test.ctl
 --sqlldr books_admin/MyPassword control=C:\Artur\University\SUBD\4\test.ctl
 
 prompt ======================================
@@ -39,4 +43,4 @@ prompt ----------after loading---------------
 
 select * from books_admin.test;
 
-conn system/oracle
+--conn system/oracle 
