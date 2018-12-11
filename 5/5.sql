@@ -27,11 +27,14 @@ end;
 
 create user myschema identified by myschema; 
 ALTER USER myschema ACCOUNT UNLOCK;
+
 grant connect, resource to myschema; 
+GRANT CREATE ANY TABLE TO myschema;
+ALTER USER myschema quota unlimited on USERS;
 
 create directory dp_dir as 'C:\Programming\Oracle\dp_dir\';
 GRANT READ, WRITE ON DIRECTORY dp_dir TO myschema;
-GRANT READ, WRITE ON DIRECTORY dp_dir TO system;
+GRANT READ, WRITE ON DIRECTORY dp_dir TO books_admin;
 
 conn myschema/myschema
 
@@ -47,16 +50,16 @@ insert into products values(3, 'milk');
 commit;
 
 
-conn system/oracle
+conn books_admin/MyPassword
  
 prompt ==============================================================
-prompt ===========connected as system==============================
+prompt ===========connected as books_admin==============================
 
 select * from myschema.products;
 
 select COUNT(1) from all_tables where upper(owner)='MYSCHEMA';
 
-host C:\oraclexe\app\oracle\product\11.2.0\server\bin\expdp.exe system/oracle schemas=myschema directory=dp_dir dumpfile=expdp_myschema.dmp logfile=expdp_myschema.log
+host C:\app\gudiea\virtual\product\12.2.0\dbhome_1\bin\expdp.exe books_admin/MyPassword schemas=myschema directory=dp_dir dumpfile=expdp_myschema.dmp logfile=expdp_myschema.log
 
 drop user myschema cascade;
 
@@ -64,6 +67,8 @@ prompt ----------------after dropping --------------------------------
 
 select COUNT(1) from all_tables where upper(owner)='MYSCHEMA';
 
-host C:\oraclexe\app\oracle\product\11.2.0\server\bin\impdp.exe system/oracle schemas=myschema directory=dp_dir dumpfile=expdp_myschema.dmp
+host C:\app\gudiea\virtual\product\12.2.0\dbhome_1\bin\impdp.exe books_admin/MyPassword schemas=myschema directory=dp_dir dumpfile=expdp_myschema.dmp
 
 select COUNT(1) from all_tables where upper(owner)='MYSCHEMA';
+
+select * from myschema.products;
