@@ -6,6 +6,10 @@ set serveroutput on;
 host subd dpclear
 --host powershell  "& ""Remove-Item C:\Programming\Oracle\dp_dir\*"""
 
+conn books_admin/MyPassword
+alter session set "_ORACLE_SCRIPT"=true;  
+
+
 declare
 	res number;
 begin

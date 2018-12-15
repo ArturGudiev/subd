@@ -1,4 +1,5 @@
 conn books_admin/MyPassword
+alter session set "_ORACLE_SCRIPT"=true;  
 
 declare
 BEGIN
@@ -35,7 +36,7 @@ column update_date format a15;
 prompt ======================================
 prompt ----------launch sqlldr --------------
 
-host C:\app\gudiea\virtual\product\12.2.0\dbhome_1\bin\sqlldr.exe books_admin/MyPassword control=C:\Artur\University\SUBD\4\test.ctl
+host C:\app\gudiea\product\12.2.0\dbhome_1\bin\sqlldr.exe books_admin/MyPassword control=C:\Artur\University\SUBD\4\test.ctl
 --sqlldr books_admin/MyPassword control=C:\Artur\University\SUBD\4\test.ctl
 
 prompt ======================================
